@@ -1,4 +1,4 @@
-import app from './routes.js';
+import app from './app';
 const port = process.env.PORT || 3333;
 
 

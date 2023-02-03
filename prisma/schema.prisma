@@ -28,7 +28,7 @@ model Produtos{
   nome String
   descricao String
   quantidade String
-  preco String
+  preco Float
   categoria String
   id_restaurante Int
   pedido Pedidos[]
