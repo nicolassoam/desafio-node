@@ -30,3 +30,9 @@ Os Assessores de Projeto devem entregar o desafio completo até a data limite.
 3. [Documentação do Prisma](https://www.prisma.io/)
 4. [Documentação do TypeORM](https://typeorm.io/)
 
+---
+
+## Tecnologias Utilizadas:
+Banco de dados – PostGreSQL
+ORM – Prisma
+
