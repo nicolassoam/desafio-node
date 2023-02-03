@@ -6,6 +6,7 @@
 | [Proposito do desafio](#proposito-do-desafio) |
 | [Como executar o projeto inicial](#como-executar-o-projeto-inicial) |
 | [Links Úteis](#links-uteis) |
+| [Tecnologias](#tecnologias-utilizadas) |
 
 
 ## Objetivos do repositorio
@@ -33,6 +34,7 @@ Os Assessores de Projeto devem entregar o desafio completo até a data limite.
 ---
 
 ## Tecnologias Utilizadas:
-Banco de dados – PostGreSQL
+Banco de dados – PostGreSQL 
+<br>
 ORM – Prisma
 
