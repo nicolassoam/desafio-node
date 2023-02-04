@@ -20,7 +20,7 @@ import prisma from "../database/prisma-service";
         });
     }
 
-    export const update = async (id: number, data: Restaurantes): Promise<Restaurantes> => {
+    export const update = async (id: number, data: Prisma.RestaurantesUpdateInput): Promise<Restaurantes> => {
         return prisma.restaurantes.update({
             where: {
                 id: id

@@ -21,7 +21,7 @@ export const create = async (data: Prisma.ProdutosCreateInput): Promise<Produtos
     });
 }
 
-export const update = async (id: number, data: Produtos): Promise<Produtos> => {
+export const update = async (id: number, data: Prisma.ProdutosUpdateInput): Promise<Produtos> => {
     return prisma.produtos.update({
         where: {
             id: id
