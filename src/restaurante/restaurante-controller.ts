@@ -7,30 +7,55 @@ import { Prisma, PrismaClient, Restaurantes } from "@prisma/client";
 export class RestauranteController {
 
     async index(req: Request, res: Response): Promise<Response> {
-        const restaurantes = await RestauranteService.index();
-        return res.status(200).json(restaurantes);
-    }
-
-    async show(req: Request, res: Response) {
-        const restaurante = await RestauranteService.show(Number(req.params.id));
-        res.status(200).json(restaurante);
-    }
-
-    async create(req: Request, res: Response) {
-        const restauranteBody : Prisma.RestaurantesCreateInput = req.body;
+        try {
+            const restaurantes = await RestauranteService.index();
+            return res.status(200).json(restaurantes);
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
         
-        const restaurante = RestauranteService.create(restauranteBody);
-        res.status(201).json(restaurante);
     }
 
-    async update(req: Request, res: Response) {
-        const restaurante = await RestauranteService.update(Number(req.params.id), req.body);
-        res.status(200).json(restaurante);
+    async show(req: Request, res: Response): Promise<Response> {
+        try {
+            const restaurante = await RestauranteService.show(Number(req.params.id));
+            return res.status(200).json(restaurante);
+
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
+        
     }
 
-    async delete(req: Request, res: Response) {
-        const restaurante = await RestauranteService.destroy(Number(req.params.id));
-        res.status(200).json(restaurante);
+    async create(req: Request, res: Response): Promise<Response> {
+        try {
+            const restauranteBody : Prisma.RestaurantesCreateInput = req.body;
+            const restaurante = await RestauranteService.create(restauranteBody);
+
+            return res.status(201).json(restaurante);
+
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
+    async update(req: Request, res: Response): Promise<Response> {
+        try {
+            const restauranteBody : Prisma.RestaurantesUpdateInput = req.body;
+            const restaurante = await RestauranteService.update(Number(req.params.id), restauranteBody);
+            return res.status(200).json(restaurante);
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
+    async delete(req: Request, res: Response): Promise<Response> {
+        try {
+            const restaurante = await RestauranteService.destroy(Number(req.params.id));
+            return res.status(200).json(restaurante);
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
     }
     
 }

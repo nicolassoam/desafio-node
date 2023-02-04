@@ -43,7 +43,7 @@ model Pedidos {
   cidade_cliente String
   endereco_cliente String
   telefone_cliente String
-  id_restaurante Int @unique
+  id_restaurante Int 
   restaurante Restaurantes @relation(fields: [id_restaurante], references: [id])
 
 }
