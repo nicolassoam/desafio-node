@@ -31,7 +31,7 @@ model Produtos{
   preco Float
   categoria String
   id_restaurante Int
-  pedido Pedidos[]
+  pedidos Pedidos[]
   restaurante Restaurantes @relation(fields: [id_restaurante], references: [id])
 }
 

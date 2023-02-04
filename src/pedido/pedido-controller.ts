@@ -4,8 +4,7 @@ import { Request, Response } from "express";
 export class PedidoController {
 
     async index(req: Request, res: Response) {
-        const produtos = ProdutoService.index();
-        console.log(produtos);
+        const produtos = await ProdutoService.index();
         res.status(200).json(produtos);
     }
 

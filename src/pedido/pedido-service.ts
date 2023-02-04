@@ -4,14 +4,15 @@ import { Prisma } from "@prisma/client";
 import prisma from "../database/prisma-service";
 
 export const index = async (): Promise<Pedidos[]> => {
-    return prisma.pedidos.findMany();
+    return prisma.pedidos.findMany({ include: { produtos: true } });
 } 
 
 export const show = async (id: number): Promise<Pedidos> => {
     return prisma.pedidos.findUnique({
         where: {
             id: id
-        }
+        },
+        include: { produtos: true }
     });
 }
 
