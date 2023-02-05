@@ -10,6 +10,12 @@ export class RestauranteController {
 
     async index(req: Request, res: Response): Promise<Response> {
         try {
+            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
+
+            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
+        
+            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
+
             const restaurantes = await RestauranteService.index();
             return res.status(200).json(restaurantes);
         } catch (error) {
@@ -20,6 +26,13 @@ export class RestauranteController {
 
     async show(req: Request, res: Response): Promise<Response> {
         try {
+
+            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
+
+            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
+
+            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
+
             const restaurante = await RestauranteService.show(Number(req.params.id));
             return res.status(200).json(restaurante);
 
@@ -43,8 +56,16 @@ export class RestauranteController {
 
     async update(req: Request, res: Response): Promise<Response> {
         try {
+
+            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
+
+            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
+
+            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
+
             const restauranteBody : Prisma.RestaurantesUpdateInput = req.body;
             const restaurante = await RestauranteService.update(Number(req.params.id), restauranteBody);
+
             return res.status(200).json(restaurante);
         } catch (error) {
             return res.status(500).json({ error: error.message });
@@ -53,6 +74,12 @@ export class RestauranteController {
 
     async delete(req: Request, res: Response): Promise<Response> {
         try {
+            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
+
+            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
+
+            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
+
             const restaurante = await RestauranteService.destroy(Number(req.params.id));
             return res.status(200).json(restaurante);
         } catch (error) {
@@ -64,7 +91,8 @@ export class RestauranteController {
         try {
             const token = await AuthService.signIn(req.body);
             if(!token) return res.status(401).json({ error: "Usuário ou senha inválidos" });
-            req.headers.authorization = token;
+            req.headers.authorization = 'Bearer '+ token;
+            console.log(req.headers.authorization);
             
             return res.status(200).json({ token });
         } catch (error) {
