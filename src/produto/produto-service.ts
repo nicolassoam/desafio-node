@@ -7,6 +7,25 @@ export const index = async (): Promise<Produtos[]> => {
     return prisma.produtos.findMany({ include: { pedidos: true } });
 } 
 
+export const indexByRestaurante = async (id: number): Promise<Produtos[]> => {
+    return prisma.produtos.findMany({
+        where: {
+            id_restaurante: id
+        },
+        include: { pedidos: true }
+    });
+}
+
+export const showByRestaurante = async (id: number, id_produto: number): Promise<Produtos> => {
+    return prisma.produtos.findFirst({
+        where: {
+            id: id_produto,
+            id_restaurante: id
+        },
+        include: { pedidos: true}
+    });
+}
+
 export const show = async (id: number): Promise<Produtos> => {
     return prisma.produtos.findUnique({
         where: {
@@ -32,10 +51,11 @@ export const update = async (id: number, data: Prisma.ProdutosUpdateInput): Prom
     });
 }
 
-export const destroy = async (id: number): Promise<Produtos> => {
-    return prisma.produtos.delete({
+export const destroy = async (id: number,restaurante_id:number): Promise<Object> => {
+    return prisma.produtos.deleteMany({
         where: {
-            id: id
+            id: id,
+            id_restaurante: restaurante_id
         }
     });
 }

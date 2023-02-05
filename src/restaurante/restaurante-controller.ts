@@ -81,6 +81,7 @@ export class RestauranteController {
 
             req.cookies["restaurante_email"] = login.email;
 
+
             return res.status(200).json({ login });
         } catch (error) {
             return res.status(500).json({ error: error.message });

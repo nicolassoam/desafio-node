@@ -8,7 +8,12 @@ export class PedidoController {
     async index(req: Request, res: Response): Promise<Response> {
         try {
 
-            const pedidos = await PedidoService.index();
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+
+            const pedidos = await PedidoService.indexByRestaurante(restauranteId);
+
             return res.status(200).json(pedidos);
         } catch (error) {
             return res.status(500).json({ error: error.message });
@@ -18,7 +23,11 @@ export class PedidoController {
     async show(req: Request, res: Response): Promise<Response> {
         try {
 
-            const pedido = await PedidoService.show(Number(req.params.id));
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+
+            const pedido = await PedidoService.showByRestaurante(restauranteId,Number(req.params.id));
             return res.status(200).json(pedido);
         } catch (error) {
             return res.status(500).json({ error: error.message });
@@ -28,13 +37,16 @@ export class PedidoController {
     async create(req: Request, res: Response): Promise<Response> {
         try {
 
-            const restaurante = await RestauranteService.show(Number(req.body.id_restaurante));
-            if(!restaurante) return res.status(404).json({ error: "Restaurante não encontrado" });
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
             
             if(!req.body.produtos_id) return res.status(404).json({ error: "Pedido sem produtos" });
             
             const produtos_id = req.body.produtos_id;
             delete req.body.produtos_id;
+
+            req.body.id_restaurante = restauranteId;
 
             const pedido = await PedidoService.create(req.body, produtos_id);
 
@@ -47,7 +59,10 @@ export class PedidoController {
     async update(req: Request, res: Response): Promise<Response> {
         try {
 
-            req.body.id_restaurante = undefined;
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+
             const pedido = await PedidoService.update(Number(req.params.id), req.body);
 
             return res.status(200).json(pedido);
@@ -59,7 +74,11 @@ export class PedidoController {
     async delete(req: Request, res: Response): Promise<Response> {
         try {
 
-            const pedido = await PedidoService.destroy(Number(req.params.id));
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+
+            const pedido = await PedidoService.destroy(Number(req.params.id), restauranteId);
 
             return res.status(200).json(pedido);
         } catch (error) {

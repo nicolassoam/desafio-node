@@ -14,6 +14,24 @@ import * as bcrypt from "bcrypt";
         });
     }
 
+    export const findIdByEmail = async (email: string): Promise<Object|null> => {
+        return prisma.restaurantes.findUnique({
+            where: {
+                email: email
+            },
+            select: {
+                id: true, 
+                senha: false,
+                nome: false,
+                email: false,
+                telefone: false,
+                endereco: false,
+                cidade: false,
+                categoria: false
+            }
+        });
+    }
+
     export const create = async (data: Prisma.RestaurantesCreateInput): Promise<Restaurantes> => {
         const salt = Number(process.env.SALT)
         const senha = await bcrypt.hash(data.senha, salt);

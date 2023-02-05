@@ -7,8 +7,9 @@ export class ProdutoController {
 
     async index(req: Request, res: Response): Promise<Response> {
         try {
-
-            const produtos = await ProdutoService.index();
+            const restauranteId = req.cookies["payload"];
+        
+            const produtos = await ProdutoService.indexByRestaurante(Number(restauranteId));
 
             return res.status(200).json(produtos);
 
@@ -19,8 +20,8 @@ export class ProdutoController {
 
     async show(req: Request, res: Response): Promise<Response> {
         try {
-
-            const produto = await ProdutoService.show(Number(req.params.id));
+            const restauranteId = req.cookies["payload"];
+            const produto = await ProdutoService.showByRestaurante(Number(restauranteId),Number(req.params.id));
 
             return res.status(200).json(produto);
 
@@ -33,9 +34,10 @@ export class ProdutoController {
     async create(req: Request, res: Response): Promise<Response> {
         try {
 
-            const restaurante = await RestauranteService.show(Number(req.body.id_restaurante));
+            const restauranteId = req.cookies["payload"];
 
-            if (!restaurante) return res.status(404).json({ error: "Restaurante não encontrado" });
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+            req.body.id_restaurante = restauranteId;
 
             const produto = await ProdutoService.create(req.body);
 
@@ -48,7 +50,11 @@ export class ProdutoController {
     async update(req: Request, res: Response): Promise<Response> {
         try {
 
-            req.body.id_restaurante = undefined;
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+            req.body.id_restaurante = restauranteId;
+
             const produto = await ProdutoService.update(Number(req.params.id), req.body);
 
             return res.status(200).json(produto);
@@ -60,7 +66,12 @@ export class ProdutoController {
     async delete(req: Request, res: Response) {
         try {
 
-            const produto = await ProdutoService.destroy(Number(req.params.id));
+            const restauranteId = req.cookies["payload"];
+
+            if (!restauranteId) return res.status(404).json({ error: "Restaurante não encontrado" });
+            
+
+            const produto = await ProdutoService.destroy(Number(req.params.id), Number(restauranteId));
             return res.status(200).json(produto);
         } catch (error) {
             return res.status(500).json({ error: error.message });
