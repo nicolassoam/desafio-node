@@ -68,18 +68,20 @@ export class RestauranteController {
             return res.status(500).json({ error: error.message });
         }
     }
-
+    
     async login(req: Request, res: Response): Promise<Response> {
         try {
-            const token = await AuthService.signIn(req.body);
+            const login = await AuthService.login(req.body);
 
-            if(!token) return res.status(401).json({ error: "Usuário ou senha inválidos" });
+            if(!login) return res.status(401).json({ error: "Usuário ou senha inválidos" });
 
-            req.headers.authorization = 'Bearer '+ token;
+            req.headers.authorization = 'Bearer '+ login.token;
 
             console.log(req.headers.authorization);
-            
-            return res.status(200).json({ token });
+
+            req.cookies["restaurante_email"] = login.email;
+
+            return res.status(200).json({ login });
         } catch (error) {
             return res.status(500).json({ error: error.message });
         }

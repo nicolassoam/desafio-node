@@ -8,8 +8,11 @@ type LoginData = {
     email:string;
     senha:string;
 }
-
-export const signIn = async(data: LoginData): Promise<string> => {
+type LoggedUser = {
+    email: string;
+    token: string;
+}
+export const login = async(data: LoginData): Promise<LoggedUser> => {
     const restaurante = await prisma.restaurantes.findUnique({
         where: {
             email: data.email
@@ -17,7 +20,9 @@ export const signIn = async(data: LoginData): Promise<string> => {
     });
     const validate = await bcrypt.compare(data.senha, restaurante.senha);
     if(validate){
-        return jwt(restaurante.id);
+        const token = await jwt(restaurante.id);
+        const email = restaurante.email;
+        return {token, email};
     }else{
         throw new Error('Senha incorreta');
     }
