@@ -12,7 +12,8 @@ router
     .get('/restaurantes/:id',controller.show);
 
 router
-    .post('/restaurantes/create', controller.create);
+    .post('/restaurantes/create', controller.create)
+    .post('/restaurantes/login', controller.login);
 
 router
     .put('/restaurantes/:id', controller.update);

@@ -29,8 +29,10 @@ export class PedidoController {
             if(!restaurante) return res.status(404).json({ error: "Restaurante não encontrado" });
             
             if(!req.body.produtos_id) return res.status(404).json({ error: "Pedido sem produtos" });
+            
             const produtos_id = req.body.produtos_id;
             delete req.body.produtos_id;
+
             const pedido = await PedidoService.create(req.body, produtos_id);
 
             return res.status(201).json(pedido);
