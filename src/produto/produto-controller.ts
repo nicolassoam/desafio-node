@@ -8,14 +8,10 @@ export class ProdutoController {
     async index(req: Request, res: Response): Promise<Response> {
         try {
 
-            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
-
-            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
-
-            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
-
             const produtos = await ProdutoService.index();
+
             return res.status(200).json(produtos);
+
         } catch (error) {
             return res.status(500).json({ error: error.message });
         }
@@ -23,15 +19,11 @@ export class ProdutoController {
 
     async show(req: Request, res: Response): Promise<Response> {
         try {
-            
-            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
-
-            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
-
-            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
 
             const produto = await ProdutoService.show(Number(req.params.id));
+
             return res.status(200).json(produto);
+
         } catch (error) {
             const msg = "Produto não encontrado";
             return res.status(500).json({ error: msg });
@@ -40,12 +32,6 @@ export class ProdutoController {
 
     async create(req: Request, res: Response): Promise<Response> {
         try {
-
-            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
-
-            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
-
-            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
 
             const restaurante = await RestauranteService.show(Number(req.body.id_restaurante));
 
@@ -62,14 +48,9 @@ export class ProdutoController {
     async update(req: Request, res: Response): Promise<Response> {
         try {
 
-            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
-
-            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
-
-            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
-
             req.body.id_restaurante = undefined;
             const produto = await ProdutoService.update(Number(req.params.id), req.body);
+
             return res.status(200).json(produto);
         } catch (error) {
             return res.status(500).json({ error: error.message });
@@ -79,12 +60,6 @@ export class ProdutoController {
     async delete(req: Request, res: Response) {
         try {
 
-            if(!req.headers.authorization.split(' ')[1]) return res.status(403).json({ error: "Sem autorização!" });
-
-            const validate = jwt.verify(req.headers.authorization.split(' ')[1]);
-
-            if(await validate == null) return res.status(403).json({ error: "Sem autorização!" });
-        
             const produto = await ProdutoService.destroy(Number(req.params.id));
             return res.status(200).json(produto);
         } catch (error) {

@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { ProdutoController } from './produto-controller';
+import { auth } from '../auth/jwt-auth';
 import prisma from '../database/prisma-service';
 import cors from 'cors';
 
@@ -9,22 +10,22 @@ const controller: ProdutoController = new ProdutoController();
 
 // gets
 router
-    .get('/produtos', controller.index)
-    .get('/produtos/:id', controller.show);
+    .get('/produtos',auth, controller.index)
+    .get('/produtos/:id',auth, controller.show);
 
 
 // posts
 router
-    .post('/produtos/create', controller.create);
+    .post('/produtos/create',auth, controller.create);
 
 
 //updates
 router
-    .put('/produtos/update/:id', controller.update);
+    .put('/produtos/update/:id',auth, controller.update);
 
 // delete
 router
-    .delete('/produtos/delete/:id', controller.delete);
+    .delete('/produtos/delete/:id',auth, controller.delete);
 
 export default router;
 
