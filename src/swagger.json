@@ -43,15 +43,21 @@
   "paths": {
     "/produtos": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
+        "tags": [
+          "Produto"
         ],
+        "description": "Endpoint para manipulação de produtos",
+        "parameters": [],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Produto"
+              }
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -63,21 +69,26 @@
     },
     "/produtos/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Produto"
+        ],
+        "description": "Endpoint para manipulação de produtos",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
+            "type": "integer",
+            "description": "ID do produto"
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Produto"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -89,15 +100,54 @@
     },
     "/produtos/create": {
       "post": {
-        "description": "",
+        "tags": [
+          "Produto"
+        ],
+        "description": "Endpoint para manipulação de produtos",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "nome",
+            "description": "Nome do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "descricao",
+            "description": "Descrição do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "preco",
+            "description": "Preço do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "categoria",
+            "description": "Categoria do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "quantidade",
+            "description": "Quantidade do produto",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
+          "201": {
+            "description": "Created",
+            "schema":{
+              "$ref": "#/definitions/Produto"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -109,21 +159,61 @@
     },
     "/produtos/update/{id}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Produto"
+        ],
+        "description": "Endpoint para manipulação de produtos",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do produto"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "nome",
+            "description": "Nome do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "descricao",
+            "description": "Descrição do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "preco",
+            "description": "Preço do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "quantidade",
+            "description": "Quantidade do produto",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "categoria",
+            "description": "Categoria do produto",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Produto"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -135,13 +225,17 @@
     },
     "/produtos/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Produto"
+        ],
+        "description": "Endpoint para manipulação de produtos",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do produto"
           },
           {
             "name": "authorization",
@@ -150,6 +244,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Produto"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -165,14 +265,17 @@
           "Restaurante"
         ],
         "description": "Endpoint para manipulação de restaurantes",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Restaurante"
+              }
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -195,14 +298,15 @@
             "required": true,
             "type": "integer",
             "description": "ID do restaurante"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Restaurante"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -212,13 +316,17 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Restaurante"
+        ],
+        "description": "Endpoint para manipulação de restaurantes",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do restaurante"
           },
           {
             "name": "authorization",
@@ -227,6 +335,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Restaurante"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -236,13 +350,17 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Restaurante"
+        ],
+        "description": "Endpoint para manipulação de restaurantes",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do restaurante"
           },
           {
             "name": "authorization",
@@ -251,6 +369,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Restaurante"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -262,21 +386,138 @@
     },
     "/restaurantes/create": {
       "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        "tags": [
+          "Restaurante"
+        ],
+        "description": "Endpoint para manipulação de restaurantes",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "nome",
+            "description": "Nome do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "Email do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "senha",
+            "description": "Senha do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "telefone",
+            "description": "Telefone do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endereco",
+            "description": "Endereço do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "cidade",
+            "description": "Cidade do restaurante",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Restaurante"
+            }
+          },
+          "400": {
+            "description": "Email já cadastrado"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/restaurantes/login": {
       "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        "tags": [
+          "Restaurante"
+        ],
+        "description": "Endpoint para manipulação de restaurantes",
+        "parameters": [
+          {
+            "name": "email",
+            "description": "Email do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "senha",
+            "description": "Senha do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "nome",
+            "description": "Nome do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "telefone",
+            "description": "Telefone do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endereco",
+            "description": "Endereço do restaurante",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "cidade",
+            "description": "Cidade do restaurante",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Email ou senha incorretos"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/pedidos": {
       "get": {
-        "description": "",
+        "tags": [
+          "Pedido"
+        ],
+        "description": "Endpoint para manipulação de pedidos",
         "parameters": [
           {
             "name": "authorization",
@@ -285,6 +526,15 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pedido"
+              }
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -296,13 +546,17 @@
     },
     "/pedidos/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Pedido"
+        ],
+        "description": "Endpoint para manipulação de pedidos",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do pedido"
           },
           {
             "name": "authorization",
@@ -311,6 +565,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Pedido"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -322,15 +582,63 @@
     },
     "/pedidos/create": {
       "post": {
-        "description": "",
+        "tags": [
+          "Pedido"
+        ],
+        "description": "Endpoint para manipulação de pedidos",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "nome_cliente",
+            "description": "Nome do cliente",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "telefone_cliente",
+            "description": "Telefone do cliente",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "endereco_cliente",
+            "description": "Endereço do cliente",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "valor_total",
+            "description": "Valor total do pedido",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "cidade_cliente",
+            "description": "Valor total do pedido",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "produto_id",
+            "description": "IDs dos produtos",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "in": "query"
           }
         ],
         "responses": {
+          "201": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Pedido"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -342,21 +650,61 @@
     },
     "/pedidos/update/{id}": {
       "put": {
-        "description": "",
+        "tags": [
+          "Pedido"
+        ],
+        "description": "Endpoint para manipulação de pedidos",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do pedido"
           },
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "nome_cliente",
+            "description": "Nome do cliente",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "telefone_cliente",
+            "description": "Telefone do cliente",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "endereco_cliente",
+            "description": "Endereço do cliente",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "valor_total",
+            "description": "Valor total do pedido",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "cidade_cliente",
+            "description": "Valor total do pedido",
+            "type": "string",
+            "in": "query"
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Pedido"
+            }
+          },
           "403": {
             "description": "Forbidden"
           },
@@ -368,13 +716,17 @@
     },
     "/pedidos/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": [
+          "Pedido"
+        ],
+        "description": "Endpoint para manipulação de pedidos",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "ID do pedido"
           },
           {
             "name": "authorization",
@@ -383,6 +735,13 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema":{
+              "$ref": "#/definitions/Pedido"
+            }
+          },
+        
           "403": {
             "description": "Forbidden"
           },

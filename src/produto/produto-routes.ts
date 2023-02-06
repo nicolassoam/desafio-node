@@ -10,22 +10,22 @@ const controller: ProdutoController = new ProdutoController();
 
 // gets
 router
-    .get('/produtos',auth, controller.index)
-    .get('/produtos/:id',auth, controller.show);
+    .get('/produtos', controller.index)
+    .get('/produtos/:id', controller.show);
 
 
 // posts
 router
-    .post('/produtos/create',auth, controller.create);
+    .post('/produtos/create', auth, controller.create);
 
 
 //updates
 router
-    .put('/produtos/update/:id',auth, controller.update);
+    .put('/produtos/update/:id', auth, controller.update);
 
 // delete
 router
-    .delete('/produtos/delete/:id',auth, controller.delete);
+    .delete('/produtos/delete/:id', auth, controller.delete);
 
 export default router;
 

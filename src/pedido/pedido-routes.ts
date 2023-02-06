@@ -10,22 +10,22 @@ const controller: PedidoController = new PedidoController();
 
 // gets
 router
-    .get('/pedidos',auth, controller.index)
-    .get('/pedidos/:id',auth, controller.show);
+    .get('/pedidos', auth, controller.index)
+    .get('/pedidos/:id', auth, controller.show);
 
 
 // posts
 router
-    .post('/pedidos/create',auth, controller.create);
+    .post('/pedidos/create', auth, controller.create);
 
 
 //updates
 router
-    .put('/pedidos/update/:id',auth, controller.update);
+    .put('/pedidos/update/:id', auth, controller.update);
 
 // delete
 router
-    .delete('/pedidos/delete/:id',auth, controller.delete);
+    .delete('/pedidos/delete/:id', auth, controller.delete);
 
 export default router;
 
