@@ -6,7 +6,7 @@
 | [Proposito do desafio](#proposito-do-desafio) |
 | [Como executar o projeto inicial](#como-executar-o-projeto-inicial) |
 | [Links Úteis](#links-uteis) |
-| [Tecnologias](#tecnologias-utilizadas) |
+| [Tecnologias Utilizadas](#tecnologias-utilizadas) |
 
 
 ## Objetivos do repositorio
@@ -34,7 +34,18 @@ Os Assessores de Projeto devem entregar o desafio completo até a data limite.
 ---
 
 ## Tecnologias Utilizadas:
+
 Banco de dados – PostGreSQL 
 <br>
+
 ORM – Prisma
+<br>
+
+Documentação da API - Swagger
+<b>OBS: É necessário adicionar o prefixo Bearer no campo authentication, antes do token</b>
+
+<br>
+
+TypeScript
+
 
