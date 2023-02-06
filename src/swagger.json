@@ -1,0 +1,701 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Desafio NodeJS",
+    "description": "API RESTful para o desafio de NodeJS"
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Restaurante",
+      "description": "Referente ao CRUD de restaurantes e login"
+    },
+    {
+      "name": "Produto",
+      "description": "Referente ao CRUD de produtos"
+    },
+    {
+      "name": "Pedido",
+      "description": "Referente ao CRUD de pedidos"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "http",
+      "in": "header",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "Coloque o prefixo 'Bearer' antes do token"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/produtos": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/produtos/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/produtos/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/produtos/update/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/produtos/delete/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/restaurantes": {
+      "get": {
+        "tags": [
+          "Restaurante"
+        ],
+        "description": "Endpoint para manipulação de restaurantes",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/restaurantes/{id}": {
+      "get": {
+        "tags": [
+          "Restaurante"
+        ],
+        "description": "Endpoint para manipulação de restaurantes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID do restaurante"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/restaurantes/create": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/restaurantes/login": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/pedidos": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pedidos/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pedidos/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pedidos/update/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pedidos/delete/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Restaurante": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "number"
+        },
+        "nome": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "senha": {
+          "type": "string",
+          "example": "string"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "string"
+        },
+        "endereco": {
+          "type": "string",
+          "example": "string"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "string"
+        },
+        "produtos": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "array"
+            },
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "preco": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "quantidade": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "restaurante_id": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "pedidos": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "array"
+            },
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "restaurante_id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "produto_id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "quantidade": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "nome_cliente": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "endereco_cliente": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "telefone_cliente": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "valor_total": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Produto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "number"
+        },
+        "nome": {
+          "type": "string",
+          "example": "string"
+        },
+        "descricao": {
+          "type": "string",
+          "example": "string"
+        },
+        "preco": {
+          "type": "string",
+          "example": "number"
+        },
+        "quantidade": {
+          "type": "string",
+          "example": "number"
+        },
+        "restaurante_id": {
+          "type": "string",
+          "example": "number"
+        },
+        "pedidos": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "array"
+            },
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "restaurante_id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "produto_id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "quantidade": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "nome_cliente": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "endereco_cliente": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "telefone_cliente": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "valor_total": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Pedido": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "number"
+        },
+        "restaurante_id": {
+          "type": "string",
+          "example": "number"
+        },
+        "produto_id": {
+          "type": "string",
+          "example": "number"
+        },
+        "quantidade": {
+          "type": "string",
+          "example": "number"
+        },
+        "nome_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "endereco_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "telefone_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "valor_total": {
+          "type": "string",
+          "example": "number"
+        },
+        "produtos": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "array"
+            },
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "preco": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "quantidade": {
+                      "type": "string",
+                      "example": "number"
+                    },
+                    "restaurante_id": {
+                      "type": "string",
+                      "example": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { Prisma, PrismaClient, Restaurantes } from "@prisma/client";
 export class RestauranteController {
 
     async index(req: Request, res: Response): Promise<Response> {
+
         try {
 
             const restaurantes = await RestauranteService.index();
@@ -23,7 +24,6 @@ export class RestauranteController {
 
     async show(req: Request, res: Response): Promise<Response> {
         try {
-
 
             const restaurante = await RestauranteService.show(Number(req.params.id));
 
