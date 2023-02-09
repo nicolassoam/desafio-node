@@ -22,6 +22,7 @@ export const verify = async (token: string): Promise<jose.JWTPayload['payload']>
 
 export const auth = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     try {
+        if(!req.headers.authorization) return res.status(403).json({ error: "Sem autorização!" });
         const token = req.headers.authorization.split(' ')[1];
         const validate = await verify(token);
         if(validate == null) return res.status(403).json({ error: "Sem autorização!" });
