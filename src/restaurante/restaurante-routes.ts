@@ -14,7 +14,7 @@ router
     .get('/restaurantes/:id', controller.show);
             
 router
-    .post('/restaurantes/create', auth, controller.create)
+    .post('/restaurantes/create',auth, controller.create)
     .post('/restaurantes/login', controller.login);
 
 router

@@ -44,12 +44,18 @@ import * as bcrypt from "bcrypt";
     }
 
     export const update = async (id: number, data: Prisma.RestaurantesUpdateInput): Promise<Restaurantes> => {
-        return prisma.restaurantes.update({
+        const salt = Number(process.env.SALT)
+        const senha = await bcrypt.hash(data.senha, salt);
+        data.senha = senha;
+
+        const restaurante = await prisma.restaurantes.update({
             where: {
                 id: id
             },
             data: data
         });
+        data.senha = '';
+        return restaurante;
     }
 
     export const destroy = async (id: number): Promise<Restaurantes> => {

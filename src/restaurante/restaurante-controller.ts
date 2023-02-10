@@ -37,7 +37,7 @@ export class RestauranteController {
 
     async create(req: Request, res: Response): Promise<Response> {
         try {
-
+            console.log(req.body);
             const exists = await RestauranteService.findIdByEmail(req.body.email);
 
             if(exists) return res.status(400).json({ error: "Email já cadastrado" });

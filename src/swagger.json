@@ -111,34 +111,11 @@
             "type": "string"
           },
           {
-            "name": "nome",
-            "description": "Nome do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "descricao",
-            "description": "Descrição do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "preco",
-            "description": "Preço do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "categoria",
-            "description": "Categoria do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "quantidade",
-            "description": "Quantidade do produto",
-            "in": "query",
-            "type": "string"
+            "name":"produto",
+            "in": "body",
+            "schema":{
+              "$ref": "#/definitions/ProdutoCreate"
+            }
           }
         ],
         "responses": {
@@ -177,34 +154,11 @@
             "type": "string"
           },
           {
-            "name": "nome",
-            "description": "Nome do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "descricao",
-            "description": "Descrição do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "preco",
-            "description": "Preço do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "quantidade",
-            "description": "Quantidade do produto",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "categoria",
-            "description": "Categoria do produto",
-            "in": "query",
-            "type": "string"
+            "name":"produto",
+            "in": "body",
+            "schema":{
+              "$ref": "#/definitions/ProdutoCreate"
+            }
           }
         ],
         "responses": {
@@ -332,6 +286,13 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name":"restaurante",
+            "in": "body",
+            "schema":{
+              "$ref": "#/definitions/RestauranteUpdate"
+            }
           }
         ],
         "responses": {
@@ -390,49 +351,22 @@
           "Restaurante"
         ],
         "description": "Endpoint para manipulação de restaurantes",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "nome",
-            "description": "Nome do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "email",
-            "description": "Email do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "senha",
-            "description": "Senha do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "telefone",
-            "description": "Telefone do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "endereco",
-            "description": "Endereço do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "cidade",
-            "description": "Cidade do restaurante",
-            "in": "query",
-            "type": "string"
+       "parameters": [
+        {
+          "name": "authorization",
+          "in": "header",
+          "type": "string"
+        },
+        {
+          "name":"restaurante",
+          "in":"body",
+          "description":"Restaurante",
+          "required":true,
+          "schema":{
+            "$ref": "#/definitions/RestauranteCreate"
           }
-        ],
+        }
+       ],
         "responses": {
           "200": {
             "description": "OK",
@@ -460,41 +394,15 @@
         "description": "Endpoint para manipulação de restaurantes",
         "parameters": [
           {
-            "name": "email",
-            "description": "Email do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "senha",
-            "description": "Senha do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "nome",
-            "description": "Nome do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "telefone",
-            "description": "Telefone do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "endereco",
-            "description": "Endereço do restaurante",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "cidade",
-            "description": "Cidade do restaurante",
-            "in": "query",
-            "type": "string"
+            "name":"restaurante",
+            "in":"body",
+            "description":"Restaurante",
+            "required":true,
+            "schema":{
+              "$ref": "#/definitions/Login"
+            }
           }
+          
         ],
         "responses": {
           "200": {
@@ -593,43 +501,13 @@
             "type": "string"
           },
           {
-            "name": "nome_cliente",
-            "description": "Nome do cliente",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "telefone_cliente",
-            "description": "Telefone do cliente",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "endereco_cliente",
-            "description": "Endereço do cliente",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "valor_total",
-            "description": "Valor total do pedido",
-            "type": "number",
-            "in": "query"
-          },
-          {
-            "name": "cidade_cliente",
-            "description": "Valor total do pedido",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "produto_id",
-            "description": "IDs dos produtos",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "in": "query"
+            "name":"pedido",
+            "in":"body",
+            "description":"Pedido",
+            "required":true,
+            "schema":{
+              "$ref": "#/definitions/PedidoCreate"
+            }
           }
         ],
         "responses": {
@@ -668,34 +546,13 @@
             "type": "string"
           },
           {
-            "name": "nome_cliente",
-            "description": "Nome do cliente",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "telefone_cliente",
-            "description": "Telefone do cliente",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "endereco_cliente",
-            "description": "Endereço do cliente",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "valor_total",
-            "description": "Valor total do pedido",
-            "type": "number",
-            "in": "query"
-          },
-          {
-            "name": "cidade_cliente",
-            "description": "Valor total do pedido",
-            "type": "string",
-            "in": "query"
+            "name":"pedido",
+            "in":"body",
+            "description":"Pedido",
+            "required":true,
+            "schema":{
+              "$ref": "#/definitions/PedidoUpdate"
+            }
           }
         ],
         "responses": {
@@ -753,6 +610,68 @@
     }
   },
   "definitions": {
+    "RestauranteCreate": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "senha": {
+          "type": "string",
+          "example": "string"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "string"
+        },
+        "endereco": {
+          "type": "string",
+          "example": "string"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "string"
+        },
+        "categoria": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "RestauranteUpdate": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "string"
+        },
+        "senha": {
+          "type": "string",
+          "example": "string"
+        },
+        "telefone": {
+          "type": "string",
+          "example": "string"
+        },
+        "endereco": {
+          "type": "string",
+          "example": "string"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "string"
+        },
+        "categoria": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
     "Restaurante": {
       "type": "object",
       "properties": {
@@ -888,6 +807,32 @@
         }
       }
     },
+    "ProdutoCreate":{
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "string"
+        },
+        "descricao": {
+          "type": "string",
+          "example": "string"
+        },
+        "preco": {
+          "type": "double",
+          "example": 1.0
+        },
+        "quantidade": {
+          "type": "string",
+          "example": "1"
+        },
+        "categoria": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    
     "Produto": {
       "type": "object",
       "properties": {
@@ -972,6 +917,63 @@
         }
       }
     },
+    "PedidoCreate":{
+      "type": "object",
+      "properties": {
+        "produtos_id": {
+          "type": "array",
+          "items":{
+            "type":"integer",
+            "example":1
+          }
+        },
+        "nome_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "endereco_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "cidade_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "telefone_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "valor_total": {
+          "type": "double",
+          "example": 1.0
+        }
+      }
+    },
+    "PedidoUpdate":{
+      "type": "object",
+      "properties": {
+        "nome_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "endereco_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "cidade_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "telefone_cliente": {
+          "type": "string",
+          "example": "string"
+        },
+        "valor_total": {
+          "type": "double",
+          "example": 1.0
+        }
+      }
+    },
     "Pedido": {
       "type": "object",
       "properties": {
@@ -988,7 +990,7 @@
           "example": "number"
         },
         "quantidade": {
-          "type": "string",
+          "type": "integer",
           "example": "number"
         },
         "nome_cliente": {
@@ -1004,7 +1006,7 @@
           "example": "string"
         },
         "valor_total": {
-          "type": "string",
+          "type": "double",
           "example": "number"
         },
         "produtos": {
@@ -1053,6 +1055,19 @@
               }
             }
           }
+        }
+      }
+    },
+    "Login":{
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "senha": {
+          "type": "string",
+          "example": "string"
         }
       }
     }

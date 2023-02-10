@@ -7,9 +7,8 @@ export class ProdutoController {
 
     async index(req: Request, res: Response): Promise<Response> {
         try {
-            const restauranteId = req.cookies["payload"];
         
-            const produtos = await ProdutoService.indexByRestaurante(Number(restauranteId));
+            const produtos = await ProdutoService.index();
 
             return res.status(200).json(produtos);
 
@@ -20,8 +19,8 @@ export class ProdutoController {
 
     async show(req: Request, res: Response): Promise<Response> {
         try {
-            const restauranteId = req.cookies["payload"];
-            const produto = await ProdutoService.showByRestaurante(Number(restauranteId),Number(req.params.id));
+
+            const produto = await ProdutoService.show(Number(req.params.id));
 
             return res.status(200).json(produto);
 
