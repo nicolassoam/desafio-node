@@ -41,7 +41,7 @@ Banco de dados – PostGreSQL
 ORM – Prisma
 <br>
 
-Documentação da API - Swagger
+Documentação da API - Swagger<br>
 <b>OBS: É necessário adicionar o prefixo Bearer no campo authentication, antes do token</b><br>
 Localizada no endereço ('/').
 <br>
