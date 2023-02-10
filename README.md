@@ -43,7 +43,7 @@ ORM – Prisma
 
 Documentação da API - Swagger
 <b>OBS: É necessário adicionar o prefixo Bearer no campo authentication, antes do token</b>
-
+Localizada no endereço ('/').
 <br>
 
 TypeScript
