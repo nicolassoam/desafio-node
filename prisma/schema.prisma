@@ -19,8 +19,9 @@ model Restaurantes {
   cidade String
   endereco String
   telefone String
-  produtos Produtos[]
+  produtos Produtos[] 
   pedidos Pedidos[]
+  
 }
 
 model Produtos{
@@ -32,7 +33,7 @@ model Produtos{
   categoria String
   id_restaurante Int
   pedidos Pedidos[]
-  restaurante Restaurantes @relation(fields: [id_restaurante], references: [id])
+  restaurante Restaurantes @relation(fields: [id_restaurante], references: [id], onDelete: Cascade)
 }
 
 model Pedidos {
@@ -44,6 +45,6 @@ model Pedidos {
   endereco_cliente String
   telefone_cliente String
   id_restaurante Int 
-  restaurante Restaurantes @relation(fields: [id_restaurante], references: [id])
-
+  restaurante Restaurantes @relation(fields: [id_restaurante], references: [id], onDelete: Cascade)
+  
 }
