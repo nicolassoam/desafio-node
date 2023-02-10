@@ -108,6 +108,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "example":"Bearer 123456789",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "type": "string"
@@ -153,6 +154,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "example":"Bearer 123456789",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "type": "string"
@@ -198,6 +200,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "example":"Bearer 123456789",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "type": "string"
@@ -291,6 +294,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "example":"Bearer 123456789",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "type": "string"
@@ -334,6 +338,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "example":"Bearer 123456789",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "type": "string"
@@ -365,6 +370,7 @@
         {
           "name": "authorization",
           "in": "header",
+          "required":true,
           "example":"Bearer 123456789",
           "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
           "type": "string"
@@ -442,6 +448,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "example":"Bearer 123456789",
             "type": "string"
@@ -483,6 +490,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "example":"Bearer 123456789",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "type": "string"
@@ -514,6 +522,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "example":"Bearer 123456789",
             "type": "string"
@@ -562,6 +571,7 @@
             "name": "authorization",
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "example":"Bearer 123456789",
+            "required":true,
             "in": "header",
             "type": "string"
           },
@@ -608,6 +618,7 @@
           {
             "name": "authorization",
             "in": "header",
+            "required":true,
             "description":"Adicione o prefixo Bearer antes do token, separado por um espaço",
             "example":"Bearer 123456789",
             "type": "string"
